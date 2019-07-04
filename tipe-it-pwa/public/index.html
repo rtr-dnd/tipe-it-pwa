@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Tipe | Editor made simpler</title>
+  <meta name="description" content="Tipeは、「タイトルをあとに書く」ノートアプリです。" />
+  <link rel="icon" href="/fabicon.png" sizes="62x62" type="image/png" />
+  <link rel="shortcut icon" href="/fabicon.png" sizes="62x62" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@rtr_dnd" />
+  <meta property="og:image" content="https://tipe-it.web.app/ogp.png" />
+  <meta property="og:image:width" content="1494" />
+  <meta property="og:image:height" content="791" />
+  <meta property="og:url" content="https://tipe-it.web.app" />
+  <meta property="og:title" content="Tipe | Editor made simpler" />
+  <meta property="og:description" content="Tipeは、「タイトルをあとに書く」ノートアプリです。" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" sizes="128x128" href="/ios-icon.png">
+
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.3/mousetrap.min.js"
+    integrity="sha256-/pxd2mYaumhh+5DSWHXAgtk2cqSHeQRyPV2sUFnuekU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.3/plugins/global-bind/mousetrap-global-bind.min.js"
+    integrity="sha256-9nbLbhyVhsFCvtD9VUqA/Sxk+0Io1A50/kpyJflDW5w=" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
+
+  <script type="text/javascript">
+    var firebaseConfig = {
+      apiKey: "AIzaSyDrZeNpMEIMsS7jo2IHg93-gUBOBQnh2gg",
+      authDomain: "tipe-it.firebaseapp.com",
+      databaseURL: "https://tipe-it.firebaseio.com",
+      projectId: "tipe-it",
+      storageBucket: "tipe-it.appspot.com",
+      messagingSenderId: "151138394945",
+      appId: "1:151138394945:web:c87a588b9c9fcc10"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
+  <script type="text/javascript">
+    // FirebaseUI config.
+    var uiConfig = {
+      signInSuccessUrl: '/',
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.TwitterAuthProvider.PROVIDER_ID
+      ],
+      // Terms of service url.
+      tosUrl: ''
+    };
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    var currentUID;
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+      } else {
+        if (location.pathname == "/") {
+          location.pathname = "/get-started"
+        }
+      }
+    });
+    if (location.pathname == "/get-started") {
+      ui.start('#firebaseui-auth-container', uiConfig);
+    }
+
+    var db = firebase.firestore();
+
+    var signout = function () {
+      firebase.auth().signOut().then(function () {
+        location.pathname = "/get-started"
+      }).catch(function (error) {
+        console.log('error occurred')
+      });
+    };
+    var deleteAccount = function () {
+      var user = firebase.auth().currentUser;
+      var credential;
+      var provider;
+      user.providerData.forEach((profile) => {
+        if (profile.providerId === 'google.com') {
+          provider = new firebase.auth.GoogleAuthProvider();
+        } else if (profile.providerId === 'twitter.com') {
+          provider = new firebase.auth.TwitterAuthProvider();
+        }
+      })
+      firebase.auth().signInWithPopup(provider).then(function (result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        credential = result.credential;
+        user.reauthenticateWithCredential(credential).then(function () {
+          // User re-authenticated.
+          db.collection('users').doc(user.uid).delete().then(function () {
+            console.log('document deleted')
+            user.delete()
+          })
+        })
+      })
+    };
+
+    var deferredPrompt
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault()
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e
+    })
+
+  </script>
+  <title>vue-editor</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+
+</body>
+
+</html>
