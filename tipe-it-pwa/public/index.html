@@ -2,12 +2,25 @@
 <html>
 
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135895903-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-135895903-3');
+  </script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Tipe | Editor made simpler</title>
   <meta name="description" content="Tipeは、「タイトルをあとに書く」ノートアプリです。" />
   <link rel="icon" href="/fabicon.png" sizes="62x62" type="image/png" />
-  <link rel="shortcut icon" href="/fabicon.png" sizes="62x62" type="image/png"/>
+  <link rel="shortcut icon" href="/fabicon.png" sizes="62x62" type="image/png" />
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="manifest" href="/manifest.json">
@@ -21,6 +34,7 @@
   <meta property="og:description" content="Tipeは、「タイトルをあとに書く」ノートアプリです。" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:locale:alternate" content="en_US" />
+  <meta name="theme-color" content="#ffffff">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="apple-touch-icon" sizes="128x128" href="/ios-icon.png">
@@ -45,7 +59,6 @@
       appId: "1:151138394945:web:c87a588b9c9fcc10"
     };
     firebase.initializeApp(firebaseConfig);
-
   </script>
   <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
@@ -119,7 +132,6 @@
       // Stash the event so it can be triggered later.
       deferredPrompt = e
     })
-
   </script>
   <title>vue-editor</title>
 </head>
