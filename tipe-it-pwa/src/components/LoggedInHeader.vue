@@ -2,7 +2,7 @@
   <header>
     <div class="logo-wrapper">
       <div class="bg-white">
-        <img id="logo" src="../assets/logo.svg" alt>
+        <img id="logo" src="../assets/logo.svg" alt />
       </div>
     </div>
     <div class="error-message" v-show="statusInt==4">Disconnected</div>
@@ -13,16 +13,24 @@
       <md-tooltip v-show="statusInt!=4">{{ $t("lih.savedtocloud") }}</md-tooltip>
       <md-tooltip v-show="statusInt==4">{{ $t("lih.couldntsave") }}</md-tooltip>
     </div>
+    <md-dialog :md-active.sync="showDialog">
+      <md-dialog-title>{{ $t("lih.addtohome") }}</md-dialog-title>
+      <div class="md-dialog-content">{{ $t("lih.addtohomeguide") }}</div>
+      <md-dialog-actions>
+        <md-button @click="showDialog = false">{{ $t("lih.closedialog") }}</md-button>
+      </md-dialog-actions>
+    </md-dialog>
     <md-menu class="dropdown" md-size="medium" md-direction="bottom-start">
       <md-button class="md-icon-button" md-menu-trigger>
         <md-icon>more_vert</md-icon>
       </md-button>
-
-      <md-menu-content class="md-elevation-1">      
+      <md-menu-content class="md-elevation-1">
+        <md-menu-item id="addtohome" @click="showDialog = true">{{ $t("lih.addtohome") }}</md-menu-item>
         <md-menu-item id="aboutme">
           <a href="https://twitter.com/rtr_dnd">{{ $t("lih.aboutme") }}</a>
         </md-menu-item>
         <md-menu-item id="language" v-on:click="lang">{{ $t("lih.language") }}</md-menu-item>
+        <md-menu-item id="language" onclick="window.location.reload(true)">{{ $t("lih.reload") }}</md-menu-item>
         <md-menu-item id="signout" onclick="signout()">{{ $t("lih.signout") }}</md-menu-item>
         <md-menu-item id="delete" onclick="deleteAccount()">{{ $t("lih.deleteaccount") }}</md-menu-item>
       </md-menu-content>
@@ -38,7 +46,8 @@ import {
   MdMenu,
   MdIcon,
   MdList,
-  MdTooltip
+  MdTooltip,
+  MdDialog
 } from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
 import Saved from "./Saved";
@@ -51,8 +60,9 @@ Vue.use(MdMenu);
 Vue.use(MdIcon);
 Vue.use(MdList);
 Vue.use(MdTooltip);
+Vue.use(MdDialog);
 Vue.component("Saved", Saved);
-Vue.component("Unsaved", Unsaved)
+Vue.component("Unsaved", Unsaved);
 Vue.component("Error", ErrorAnim);
 
 var statusInt = 0; // 0:saved 1:unsaved 4:error
@@ -72,7 +82,8 @@ export default {
   data: function() {
     return {
       statusInt: 0,
-      initialStatus: 1
+      initialStatus: 1,
+      showDialog: false
     };
   },
   watch: {
@@ -91,7 +102,7 @@ export default {
           this.$refs.error.restart();
         }
       }
-    },
+    }
   },
   methods: {
     lang: function() {
@@ -126,9 +137,6 @@ export default {
       text-decoration: !important;
     }
   }
-}
-#delete {
-  color: #c62828;
 }
 header {
   width: calc(100vw - 48px);

@@ -65,10 +65,12 @@ export default {
 
 <style lang="scss" scoped>
 #texts {
-  position: static;
+  background-color: #fff;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
   padding: 20vh 0 40vh 0;
   @media (min-width: 600px) {
-    position: absolute;
     top: 0;
     left: 0;
     bottom: 5vh;

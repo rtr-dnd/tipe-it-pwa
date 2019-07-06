@@ -136,10 +136,18 @@
   <title>vue-editor</title>
 </head>
 
-<body>
+<body style="position: relative">
+  <div id="sorry" style="display: none; position: absolute;">
+    <div>Failed to load. Try <a onclick="window.location.reload(true)" style="color: #0000ff">reload</a>, or leave app for a second and come back.</div>
+    <div>申し訳ありません。読み込めませんでした。 <a onclick="window.location.reload(true)" style="color: #0000ff">再読み込み</a>するか、しばらくおいてまた開いてみてください。</div>  
+  </div>
   <div id="app"></div>
   <!-- built files will be auto injected -->
-
+  <script>
+  window.onload = function() {
+    document.getElementById("sorry").style.display = "block";
+  }
+  </script>
 </body>
 
 </html>

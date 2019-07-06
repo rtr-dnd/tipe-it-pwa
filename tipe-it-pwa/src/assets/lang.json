@@ -19,7 +19,10 @@
       "signout": "Sign out",
       "deleteaccount": "Delete account",
       "aboutme": "About me",
-      "addtohome": "Add to home screen"
+      "addtohome": "Add to home screen",
+      "addtohomeguide": "Follow these steps to add Tipe to home screen.",
+      "closedialog": "Done",
+      "reload": "Force reload"
     }
   },
 
@@ -43,7 +46,10 @@
       "signout": "サインアウト",
       "deleteaccount": "アカウントを削除",
       "aboutme": "制作者について",
-      "addtohome": "ホーム画面に追加"
+      "addtohome": "ホーム画面に追加",
+      "addtohomeguide": "以下の手順で、ホーム画面にTipeを追加できます。",
+      "closedialog": "閉じる",
+      "reload": "強制リロード"
     }
   }
 }

@@ -52,4 +52,29 @@ textarea{
 #app{
   width: 100%;
 }
+
+.md-overlay{
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+.md-dialog{
+  background: #fff;
+  box-shadow: none !important;
+  border: 1px solid;
+  border-radius: 5px !important;
+  border-color: rgba(0, 0, 0, 0.1)
+}
+.md-dialog-content{
+  color: rgba(0, 0, 0, 0.8)
+}
+.md-dialog-title{
+  color: rgba(0, 0, 0, 0.8)
+}
+.md-list-item-content{
+  color: rgba(0, 0, 0, 0.6)
+}
+#delete{
+  .md-list-item-content{
+    color: #c62828
+  }
+}
 </style>
