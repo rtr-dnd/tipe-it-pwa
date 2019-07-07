@@ -17,7 +17,7 @@
         v-bind:placeholder="addATitle"
         v-bind:id="'titlearea-'+contentIndex"
         autocomplete="off"
-      >
+      />
     </div>
   </div>
 </template>
@@ -54,10 +54,10 @@ export default {
         var connectedRef = firebase.database().ref(".info/connected");
         connectedRef.on("value", snap => {
           if (snap.val() === true) {
-            this.$emit("synced-event");
             db.collection("users")
               .doc(firebase.auth().currentUser.uid)
               .update({ content: PropertyStore.state.property.content });
+              this.$emit("synced-event");
           } else {
             this.$emit("error-event");
           }
