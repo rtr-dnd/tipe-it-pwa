@@ -15,7 +15,27 @@
     </div>
     <md-dialog :md-active.sync="showDialog">
       <md-dialog-title>{{ $t("lih.addtohome") }}</md-dialog-title>
-      <div class="md-dialog-content">{{ $t("lih.addtohomeguide") }}</div>
+      <div class="md-dialog-content">
+        {{ $t("lih.addtohomeguide") }}
+        <section class="ios" >
+          <h2>iOS</h2>
+          <div class="guide-content">
+            <img src="../assets/ios-share-icon.svg" alt=""> {{$t("lih.iosguide")}}
+          </div>
+        </section>
+        <section class="android" >
+          <h2>Android</h2>
+          <div class="guide-content">
+            <md-icon>more_vert</md-icon> {{$t("lih.androidguide")}}
+          </div>
+        </section>
+        <section class="pc" >
+          <h2>PC (Chrome)</h2>
+          <div class="guide-content">
+            <md-icon>more_vert</md-icon> {{$t("lih.pcguide")}}
+          </div>
+        </section>
+      </div>
       <md-dialog-actions>
         <md-button @click="showDialog = false">{{ $t("lih.closedialog") }}</md-button>
       </md-dialog-actions>
@@ -30,7 +50,8 @@
           <a href="https://twitter.com/rtr_dnd">{{ $t("lih.aboutme") }}</a>
         </md-menu-item>
         <md-menu-item id="language" v-on:click="lang">{{ $t("lih.language") }}</md-menu-item>
-        <md-menu-item id="language" onclick="window.location.reload(true)">{{ $t("lih.reload") }}</md-menu-item>
+        <md-menu-item id="reload" onclick="window.location.reload(true)">{{ $t("lih.reload") }}</md-menu-item>
+        <md-menu-item id="version">{{ $t("lih.version") }} 1.0.0</md-menu-item>
         <md-menu-item id="signout" onclick="signout()">{{ $t("lih.signout") }}</md-menu-item>
         <md-menu-item id="delete" onclick="deleteAccount()">{{ $t("lih.deleteaccount") }}</md-menu-item>
       </md-menu-content>

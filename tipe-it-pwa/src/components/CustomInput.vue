@@ -62,7 +62,7 @@ export default {
             this.$emit("error-event");
           }
         });
-      }, 1200);
+      }, 1000);
       timerIsSet = true;
       this.$emit("unsaved-event");
     }

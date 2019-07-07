@@ -22,7 +22,11 @@
       "addtohome": "Add to home screen",
       "addtohomeguide": "Follow these steps to add Tipe to home screen.",
       "closedialog": "Done",
-      "reload": "Force reload"
+      "reload": "Force reload",
+      "version": "ver.",
+      "iosguide": "→ \"Add to Home Screen\"",
+      "androidguide": "→ \"Add to Home screen\"",
+      "pcguide": "→ Install \"Tipe\""
     }
   },
 
@@ -49,7 +53,11 @@
       "addtohome": "ホーム画面に追加",
       "addtohomeguide": "以下の手順で、ホーム画面にTipeを追加できます。",
       "closedialog": "閉じる",
-      "reload": "強制リロード"
+      "reload": "強制リロード",
+      "version": "バージョン",
+      "iosguide": "→ 「ホーム画面に追加」",
+      "androidguide": "→ 「ホーム画面に追加",
+      "pcguide": "→ 「Tipe」をインストール"
     }
   }
 }
