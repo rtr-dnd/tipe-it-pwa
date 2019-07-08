@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="login-page">
     <NotLoggedInHeader></NotLoggedInHeader>
     <div class="heading">
       <div class="flex-inner">

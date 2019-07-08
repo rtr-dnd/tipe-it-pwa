@@ -77,4 +77,10 @@ textarea{
     color: #c62828
   }
 }
+#login-page{
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  z-index: 5;
+}
 </style>
